@@ -3,10 +3,15 @@
 }
 
 .button{
-    background-color: blueviolet;
+    background-color: darkblue;
     color: beige;
     margin: 15px 0;
     padding: 5px;
+}
+.request__delete {
+    background-color: blueviolet;
+    color: white;
+    margin: 15px 0;
 }
 
 input {
