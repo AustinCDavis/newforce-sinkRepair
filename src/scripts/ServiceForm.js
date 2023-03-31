@@ -34,7 +34,6 @@ export const ServiceForm = () => {
                 const userAddress = document.querySelector("input[name='serviceAddress']").value
                 const userBudget = document.querySelector("input[name='serviceBudget']").value
                 const userDate = document.querySelector("input[name='serviceDate']").value
-        
                 // Make an object out of the user input
                 const dataToSendToAPI = {
                     description: userDescription,

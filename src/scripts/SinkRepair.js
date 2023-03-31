@@ -2,6 +2,7 @@ import { ServiceForm } from "./ServiceForm.js"
 import { Requests } from "./Requests.js"
 
 
+
 export const SinkRepair = () => {
     return `
         <h1>Maude and Merle's Sink Repair</h1>
@@ -11,6 +12,11 @@ export const SinkRepair = () => {
 
         <section class="serviceRequests">
             <h2>Service Requests</h2>
+            <table class="requests">
+            <tr class="tablehead">
+            <th>Description</th>
+            <th>Completed By</th>
+            </tr>
             ${Requests()}
         </section>
     `

@@ -14,6 +14,34 @@
     margin: 15px 0;
 }
 
+.tablehead{
+    background-color: darkslategrey !important;
+    color: white;
+    padding: 10px;
+}
+.tablebuttons{
+    text-align: right;
+}
+
+.completions{
+    background-color: rgba(251, 80, 42, 0.3) !important;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 40%
+}
+
+
+td {
+    text-align: left;
+}
+  
+tr:nth-child(odd) {
+    background-color: #dddddd;
+}
+
 input {
     width: 40%;
 }
