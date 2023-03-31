@@ -20,11 +20,9 @@ export const fetchRequests = () => {
 }
 
 export const getRequests = () => {
-    const sortedRequests = applicationState.requests.map(request => ({...request})).sort((a, b) => a.neededBy - b.neededBy)
-
-    const requests = sortedRequests.map(request => ({...request}))
-    return requests.map(request => ({...request}))
+    return applicationState.requests.map(request => ({...request}))
 }
+
 export const getPlumbers = () => {
     return applicationState.plumbers.map(plumber => ({...plumber}))
 }
@@ -99,7 +97,7 @@ export const saveCompletion = (userServiceCompletion) => {
 
 export const getCompletions = (state) => {
 
-    const sortedCompletions = state.completions.map(completion => ({...completion})).sort((a, b) => a.date_created - b.date_created)
+    const sortedCompletions = state.completions.map(completion => ({...completion})).sort((a, b) => a.date_ccompleted - b.date_ccompleted)
 
     const requests = state.requests.map(request => ({...request}))
     

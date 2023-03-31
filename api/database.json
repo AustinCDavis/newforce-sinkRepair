@@ -1,20 +1,55 @@
 {
-  "plumbers": [],
-  "completions": [],
+  "plumbers": [
+    {
+      "name": "Ted Leon",
+      "id": 1
+    },
+    {
+      "name": "John Will",
+      "id": 2
+    }
+  ],
+  "completions": [
+    {
+      "requestId": 1,
+      "plumberId": 1,
+      "date_completed": "2023-03-31T23:01:47.709Z",
+      "id": 1
+    },
+    {
+      "requestId": 4,
+      "plumberId": 1,
+      "date_completed": "2023-03-31T23:31:25.611Z",
+      "id": 3
+    },
+    {
+      "requestId": 6,
+      "plumberId": 2,
+      "date_completed": "2023-03-31T23:32:09.284Z",
+      "id": 5
+    }
+  ],
   "requests": [
     {
       "description": "test",
-      "address": "222",
-      "budget": "222",
-      "neededBy": "2023-03-30",
+      "address": "1234",
+      "budget": "1",
+      "neededBy": "2023-04-07",
       "id": 1
     },
     {
       "description": "tester",
-      "address": "1234",
-      "budget": "1",
-      "neededBy": "2023-03-31",
-      "id": 2
+      "address": "222",
+      "budget": "55",
+      "neededBy": "2023-04-06",
+      "id": 4
+    },
+    {
+      "description": "sdhgjkl",
+      "address": "dsfghjk",
+      "budget": "456",
+      "neededBy": "2023-04-08",
+      "id": 6
     }
   ]
 }

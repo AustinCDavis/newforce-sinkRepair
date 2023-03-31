@@ -11,7 +11,7 @@ mainContainer.addEventListener(
             const completion = { 
                 "requestId": +(requestId),
                 "plumberId": +(plumberId),
-                "date_created": new Date(),
+                "date_completed": new Date(),
             }
             /*
             Invoke the function that performs the POST request
@@ -30,24 +30,28 @@ const convertRequestToListElement = (request) => {
     let state = getState()
     let completions = getCompletions(state)
  
-    if (request.id != completions.requestId){
+const matchingCompletion = completions.find((completion) => {
+    return request.id === completion.requestId
+})
+
+    if (!matchingCompletion){
         return `
         <tr>
         <td>
         <li>
         ${request.description}
         </td>
-        <td class="tablebuttons">
+        <td style="text-align: center">
         <select class="plumbers" id="plumbers">
-        <option value="">Choose</option>
+        <option value="${request.id}">Choose</option>
         ${
             plumbers.map(
                 plumber => {
                     return `<option value="${request.id}--${plumber.id}">${plumber.name}</option>`
                 }).join("")
         }
-        </select>
-    
+        </select></td>
+        <td style="text-align: center">
         <button class="request__delete"
         id="request--${request.id}">
         Delete
@@ -56,32 +60,47 @@ const convertRequestToListElement = (request) => {
         </td>
         </tr>
         `
-    } else {
-        return `
-        <tr class="completions">
-        <td>
-        <li>
-        ${request.description}
-        </td>
-        <td class="tablebuttons">
-
-        <button class="request__delete"
-        id="request--${completions.id}">
-        Delete
-        </button>
-        </li>
-        </td>
-        </tr>
-        `
     }
+    
+}
+
+const convertCompletionToListElement = (requests) => {
+    const plumbers = getPlumbers()
+    let state = getState()
+    let completions = getCompletions(state)
+
+    for (const completion of completions) {
+        if(requests.id === completion.id){
+           
+            const matchingPlumber = plumbers.find((plumber) => {
+                return parseInt(completion.plumberId) === plumber.id
+            })
+                
+            return `
+            <tr class="completions">
+            <td>
+            <li>
+            ${requests.description}
+            </td>
+            <td style="text-align: center">${matchingPlumber.name}</td>
+            <td class="tablebuttons">
+            <button class="request__delete"
+            id="request--${completion.id}">
+            Delete
+            </button>
+            </li>
+            </td>
+            </tr>
+            `
+        }
+        
     }
 
+}
 export const Requests = () => {
     
     let state = getState()
-    console.log(state)
     let completions = getCompletions(state)
-    console.log(completions)
     
     const request = getRequests()
     
@@ -90,6 +109,9 @@ export const Requests = () => {
     <ul class="col">
     ${
         request.map(convertRequestToListElement).join("")
+    }
+    ${
+        request.map(convertCompletionToListElement).join("")
     }
     
     </ul>
